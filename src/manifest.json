@@ -1,0 +1,58 @@
+{
+  "manifest_version": 2,
+  "name": "我的工具",
+  "version": "1.0.0",
+  "description": "24663209@qq.com",
+  "icons": {
+    "16": "static/img/icon.png",
+    "19": "static/img/icon.png",
+    "38": "static/img/icon.png",
+    "48": "static/img/icon.png",
+    "128": "static/img/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "static/img/icon.png",
+    "default_title": "我的工具",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "persistent": true,
+    //    "scripts": [
+    //      "background.main.js"
+    //    ]
+    "page": "background.html"
+  },
+  // 普通页面能够直接访问的插件资源列表，这些资源的访问URL是 chrome-extension://[PACKAGE ID]/[PATH]，可通过调用chrome.extension.getURL构造出。 这些白名单资源
+  "web_accessible_resources": [
+    "content.html",
+    "content.main.js",
+    "background.html",
+    "static/**"
+  ],
+  "devtools_page": "devtools.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.baidu.com/*"
+      ],
+      "js": [
+        "static/js/jquery.min.js",
+        "index.main.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "contextMenus",
+    "background",
+    "tabs",
+    //标签页
+    "storage",
+    "bookmarks"
+    //书签
+  ]
+}
